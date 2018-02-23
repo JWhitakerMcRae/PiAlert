@@ -27,7 +27,7 @@ RUN pip install -U \
     unicornhat
 
 # Setup app environment
-COPY start.sh config/* scripts/* /app/
+COPY src /app
 RUN chmod 744 /app/start.sh
 
 # Start app
