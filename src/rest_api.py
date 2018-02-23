@@ -11,7 +11,7 @@ def api():
     """
     API endpoint for '/api'
     """
-    return 'API endpoints: <None>'
+    return 'API endpoints: None'
 
 
 if __name__ == '__main__':
