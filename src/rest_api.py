@@ -23,4 +23,4 @@ def set_screen_color():
 
 
 if __name__ == '__main__':
-    rest_api.run(host='0.0.0.0')
+    rest_api.run(host='0.0.0.0') # run flask server
