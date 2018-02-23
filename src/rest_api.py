@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import flask
-import logging
 
 
 # API object
@@ -12,7 +11,7 @@ def api():
     """
     API endpoint for '/api'
     """
-    return 'API endpoints: <None>'.format(url)
+    return 'API endpoints: <None>'
 
 
 if __name__ == '__main__':
