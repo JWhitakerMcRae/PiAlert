@@ -18,24 +18,19 @@ def pulse_color(color=(255,255,255), brightness=0.8, total_time=1, step_time=0.0
     steps_half = int(total_time / step_time / 2)
     print('Half steps: {}'.format(steps_half))
     delta_brightness = brightness / steps_half
-    # Start pulse
-    for _ in range(steps_half): # brighter
-        print('Current brightness: {}'.format(unicornhat.get_brightness()))
+    # Start pulse up
+    for _ in range(steps_half):
         brightness = unicornhat.get_brightness() + delta_brightness
-        print('New brightness: {} ({} + {})'.format(brightness, unicornhat.get_brightness(), delta_brightness))
-        try:
-            unicornhat.brightness(brightness)
-            unicornhat.show()
-        except ValueError as err:
-            print('Unable to set brightness level {}, exeption: {}'.format(brightness, err))
+        if brightness > 1: brightness = 1 # ensure max limit (in case of steps_half rounding)
+        unicornhat.brightness(brightness)
+        unicornhat.show()
         time.sleep(step_time)
-    for _ in range(steps_half): # darker
+    # Start pulse down
+    for _ in range(steps_half):
         brightness = unicornhat.get_brightness() - delta_brightness
-        try:
-            unicornhat.brightness(brightness)
-            unicornhat.show()
-        except ValueError as err:
-            print('Unable to set brightness level {}, exeption: {}'.format(brightness, err))
+        if brightness < 0: brightness = 0 # ensure min limit (in case of steps_half rounding)
+        unicornhat.brightness(brightness)
+        unicornhat.show()
         time.sleep(step_time)
 
 

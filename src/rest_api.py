@@ -17,12 +17,12 @@ def pulse_screen_color():
     r = flask.request.args.get('r', default=0, type=int)
     g = flask.request.args.get('g', default=0, type=int)
     b = flask.request.args.get('b', default=0, type=int)
-    brightness = flask.request.args.get('brightness', default=0.2, type=float)
+    brightness = flask.request.args.get('brightness', default=0.8, type=float)
     total_time = flask.request.args.get('total_time', default=1, type=float)
-    step_time = flask.request.args.get('step_time', default=0.1, type=float)
+    step_time = flask.request.args.get('step_time', default=0.01, type=float)
     color = (r, g, b)
     unicorn_hat.pulse_color(color=color, brightness=brightness, total_time=total_time, step_time=step_time)
-    return 'Pulsed screen color of {} (over {} seconds)'.format(color, total_time)
+    return 'Pulsed screen color of {} over {} second(s)'.format(color, total_time)
 
 
 if __name__ == '__main__':
