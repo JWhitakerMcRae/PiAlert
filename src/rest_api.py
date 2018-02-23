@@ -1,17 +1,25 @@
 #!/usr/bin/env python
 import flask
 
+import unicorn_hat
+
 
 # API object
 rest_api = flask.Flask(__name__)
 
 
-@rest_api.route('/api')
-def api():
+@rest_api.route('/set_screen_color')
+def set_screen_color():
     """
-    API endpoint for '/api'
+    API endpoint for '/set_screen_color'
+    Valid parameters include 'r' (0-255), 'g' (0-255), 'b' (0-255)
     """
-    return 'API endpoints: None'
+    r = request.args.get('r', default='0')
+    g = request.args.get('g', default='0')
+    b = request.args.get('b', default='0')
+    color = (r, g, b)
+    unicorn_hat.set_all(color=color)
+    return 'Set screen color to {}'.format(color)
 
 
 if __name__ == '__main__':
