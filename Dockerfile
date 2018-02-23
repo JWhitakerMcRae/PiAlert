@@ -28,7 +28,7 @@ RUN pip install -U \
 
 # Setup app environment
 COPY src /app
-RUN chmod 744 /app/start.sh
+COPY start.sh /app
 
 # Start app
 CMD ["bash", "/app/start.sh"]
