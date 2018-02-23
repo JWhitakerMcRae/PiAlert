@@ -27,10 +27,13 @@ def pulse_all(color=(255,255,255), brightness=0.2, total_time=1, step_time=0.1):
     unicornhat.show()
     # Calculate pulse data
     steps_half = int(total_time / step_time / 2)
+    print('Half steps: {}'.format(steps_half))
     delta_brightness = brightness / steps_half
     # Start pulse
     for _ in range(steps_half): # brighter
+        print('Current brightness: {}'.format(unicornhat.get_brightness()))
         brightness = unicornhat.get_brightness() + delta_brightness
+        print('New brightness: {} ({} + {})'.format(brightness, unicornhat.get_brightness(), delta_brightness))
         unicornhat.brightness(brightness)
         unicornhat.show()
         time.sleep(step_time)
