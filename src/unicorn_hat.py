@@ -3,18 +3,7 @@ import time
 import unicornhat
 
 
-def set_all(color=(255,255,255), brightness=0.2):
-    """
-    Set all LCDs to green.
-    :param color: tuple representing color as (R,G,B)
-    :param brightness: max brightness value of pulse (0-1)
-    """
-    unicornhat.brightness(brightness)
-    unicornhat.set_all(color)
-    unicornhat.show()
-
-
-def pulse_all(color=(255,255,255), brightness=0.8, total_time=1, step_time=0.01):
+def pulse_color(color=(255,255,255), brightness=0.8, total_time=1, step_time=0.01):
     """
     Set all LCDs to green.
     :param color: tuple representing color as (R,G,B)
@@ -34,13 +23,19 @@ def pulse_all(color=(255,255,255), brightness=0.8, total_time=1, step_time=0.01)
         print('Current brightness: {}'.format(unicornhat.get_brightness()))
         brightness = unicornhat.get_brightness() + delta_brightness
         print('New brightness: {} ({} + {})'.format(brightness, unicornhat.get_brightness(), delta_brightness))
-        unicornhat.brightness(brightness)
-        unicornhat.show()
+        try:
+            unicornhat.brightness(brightness)
+            unicornhat.show()
+        except ValueError as err:
+            print('Unable to set brightness level {}, exeption: {}'.format(brightness, err))
         time.sleep(step_time)
     for _ in range(steps_half): # darker
         brightness = unicornhat.get_brightness() - delta_brightness
-        unicornhat.brightness(brightness)
-        unicornhat.show()
+        try:
+            unicornhat.brightness(brightness)
+            unicornhat.show()
+        except ValueError as err:
+            print('Unable to set brightness level {}, exeption: {}'.format(brightness, err))
         time.sleep(step_time)
 
 
