@@ -16,4 +16,3 @@ def api():
 
 if __name__ == '__main__':
     rest_api.run(host='0.0.0.0')
-    print('*** REST API initialized! ***')

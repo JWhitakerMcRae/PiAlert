@@ -28,7 +28,7 @@ RUN pip install -U \
 
 # Setup app environment
 COPY src /app
-COPY start.sh /app
+COPY start.sh /usr/local/bin
 
 # Start app
-CMD ["bash", "/app/start.sh"]
+CMD ["bash", "start.sh"]
