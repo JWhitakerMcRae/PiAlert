@@ -8,7 +8,7 @@ def set_all(color=(255,255,255)):
     :param color: tuple representing color as (R,G,B)
     """
     unicornhat.set_all(color)
-    unicornhat.show()
+    #unicornhat.show()
 
 
 if __name__ == '__main__':
