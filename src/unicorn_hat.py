@@ -14,7 +14,7 @@ def set_all(color=(255,255,255), brightness=0.2):
     unicornhat.show()
 
 
-def pulse_all(color=(255,255,255), brightness=0.2, total_time=1, step_time=0.1):
+def pulse_all(color=(255,255,255), brightness=0.8, total_time=1, step_time=0.01):
     """
     Set all LCDs to green.
     :param color: tuple representing color as (R,G,B)
