@@ -14,9 +14,9 @@ def set_screen_color():
     API endpoint for '/set_screen_color'
     Valid parameters include 'r' (0-255), 'g' (0-255), 'b' (0-255)
     """
-    r = request.args.get('r', default='0')
-    g = request.args.get('g', default='0')
-    b = request.args.get('b', default='0')
+    r = flask.request.args.get('r', default=0, type=int)
+    g = flask.request.args.get('g', default=0, type=int)
+    b = flask.request.args.get('b', default=0, type=int)
     color = (r, g, b)
     unicorn_hat.set_all(color=color)
     return 'Set screen color to {}'.format(color)
