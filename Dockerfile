@@ -21,6 +21,9 @@ RUN apt-get update && apt-get -y install \
     python-dev \
     python-pip
 
+# Allow ssh (and scp) as root
+#RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+
 # Install app tools and dependencies
 RUN pip install -U \
     flask \
